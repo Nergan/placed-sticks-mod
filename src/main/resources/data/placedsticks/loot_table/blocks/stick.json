@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" },
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "placedsticks:stick",
+          "properties": { "axis_x": "true" }
+        }
+      ],
+      "entries": [{ "type": "minecraft:item", "name": "minecraft:stick" }]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" },
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "placedsticks:stick",
+          "properties": { "axis_y": "true" }
+        }
+      ],
+      "entries": [{ "type": "minecraft:item", "name": "minecraft:stick" }]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" },
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "placedsticks:stick",
+          "properties": { "axis_z": "true" }
+        }
+      ],
+      "entries": [{ "type": "minecraft:item", "name": "minecraft:stick" }]
+    }
+  ],
+  "random_sequence": "placedsticks:blocks/stick"
+}

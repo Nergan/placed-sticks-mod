@@ -1,0 +1,16 @@
+{
+  "name": "placedsticks.guide.entry.sticks",
+  "icon": "minecraft:stick",
+  "category": "placedsticks:placing",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "placedsticks.guide.page.sticks.1"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "placedsticks.guide.page.sticks.2"
+    }
+  ]
+}

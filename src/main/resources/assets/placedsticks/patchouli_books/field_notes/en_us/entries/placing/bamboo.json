@@ -1,0 +1,17 @@
+{
+  "name": "placedsticks.guide.entry.bamboo",
+  "icon": "minecraft:bamboo",
+  "category": "placedsticks:placing",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "placedsticks.guide.page.bamboo.1"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "placedsticks:field_notes",
+      "text": "placedsticks.guide.page.bamboo.2"
+    }
+  ]
+}

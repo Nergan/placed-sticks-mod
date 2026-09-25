@@ -1,0 +1,16 @@
+{
+  "multipart": [
+    {
+      "when": { "axis_y": "true" },
+      "apply": { "model": "placedsticks:block/bamboo_axis" }
+    },
+    {
+      "when": { "axis_x": "true" },
+      "apply": { "model": "placedsticks:block/bamboo_axis", "x": 90, "y": 90 }
+    },
+    {
+      "when": { "axis_z": "true" },
+      "apply": { "model": "placedsticks:block/bamboo_axis", "x": 90 }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "block.placedsticks.stick": "Stick",
+  "block.placedsticks.bamboo": "Bamboo Stalk",
+  "placedsticks.guide.name": "Field Notes",
+  "placedsticks.guide.subtitle": "Rods and stalks",
+  "placedsticks.guide.landing": "Sticks and bamboo can stand in the world as thin rods. Three fit in one block: one along each axis.",
+  "placedsticks.guide.cat.placing": "Placing",
+  "placedsticks.guide.cat.placing.desc": "How to put sticks and bamboo into the world.",
+  "placedsticks.guide.entry.sticks": "Sticks",
+  "placedsticks.guide.page.sticks.1": "Right-click a block with a stick. The rod is placed in the empty cell along the face you clicked: the top or bottom stands it upright, a side lays it flat.$(br2)Click the rod on another face to add a second or third. One block holds one rod per axis.",
+  "placedsticks.guide.page.sticks.2": "Breaking the block returns every stick that was in it. An axe is faster. A chest, door, or other used block still opens if you are not sneaking; sneak to place a stick on it.",
+  "placedsticks.guide.entry.bamboo": "Bamboo",
+  "placedsticks.guide.page.bamboo.1": "Bamboo follows the same three-axis rule, and the stalk is a little thicker.$(br2)A normal click on ground where bamboo can grow still plants vanilla bamboo. Sneak to force a decorative stalk there. On stone, or any spot bamboo cannot grow, the stalk is placed without sneaking.",
+  "placedsticks.guide.page.bamboo.2": "This book is crafted from a book and a stick. It is given once, the first time you enter a world."
+}

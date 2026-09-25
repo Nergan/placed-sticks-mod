@@ -1,0 +1,51 @@
+# neoforge.mods.toml
+# Значения вида ${...} подставляются Gradle-задачей generateModMetadata
+# из gradle.properties.
+
+modLoader = "javafml" #mandatory
+loaderVersion = "${loader_version_range}" #mandatory
+
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/Nergan/placed-sticks-mod/issues"
+
+[[mods]] #mandatory
+modId = "${mod_id}" #mandatory
+version = "${mod_version}" #mandatory
+displayName = "${mod_name}" #mandatory
+logoFile = "logo.png"
+displayURL = "https://github.com/Nergan/placed-sticks-mod"
+authors = "${mod_authors}"
+description = '''
+${mod_description}
+
+Place sticks and bamboo stalks in the world as thin rods. Up to three fit in one block, one along each axis. A plain bamboo click still plants vanilla bamboo.
+Палки и стебли бамбука ставятся в мир тонкими прутьями. В один блок входят до трёх, по одному на каждую ось. Обычный клик бамбуком по-прежнему сажает ванильный бамбук.
+'''
+
+[[dependencies.${mod_id}]]
+modId = "neoforge"
+type = "required"
+versionRange = "[${neo_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "kotlinforforge"
+type = "required"
+versionRange = "${kff_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "patchouli"
+type = "optional"
+versionRange = "[0,)"
+ordering = "NONE"
+side = "BOTH"

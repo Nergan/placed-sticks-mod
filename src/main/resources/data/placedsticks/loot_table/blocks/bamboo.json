@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" },
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "placedsticks:bamboo",
+          "properties": { "axis_x": "true" }
+        }
+      ],
+      "entries": [{ "type": "minecraft:item", "name": "minecraft:bamboo" }]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" },
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "placedsticks:bamboo",
+          "properties": { "axis_y": "true" }
+        }
+      ],
+      "entries": [{ "type": "minecraft:item", "name": "minecraft:bamboo" }]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" },
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "placedsticks:bamboo",
+          "properties": { "axis_z": "true" }
+        }
+      ],
+      "entries": [{ "type": "minecraft:item", "name": "minecraft:bamboo" }]
+    }
+  ],
+  "random_sequence": "placedsticks:blocks/bamboo"
+}
