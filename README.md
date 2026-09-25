@@ -6,7 +6,7 @@
 
 A **Minecraft 1.21.1** NeoForge mod: place sticks and bamboo stalks as thin rods. Written in Kotlin with [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge).
 
-The UI and the optional guidebook are available in English and Russian.
+Block names are available in English and Russian.
 
 ## What it does
 
@@ -14,7 +14,6 @@ The UI and the optional guidebook are available in English and Russian.
 - **Three per block.** Click the rod on another face to add a second or third. One block holds one rod along each axis. Breaking it returns every stick that was inside.
 - **Bamboo.** The same rods, a little thicker, using the vanilla bamboo stalk. A normal click on ground where bamboo can grow still plants vanilla bamboo. Sneak to place a decorative stalk there. Anywhere bamboo cannot grow, the stalk is placed without sneaking.
 - **Used blocks.** Chests, doors, and other blocks you can use still open when you are not sneaking. Sneak to place a rod on them.
-- **Guidebook (optional).** With [Patchouli](https://modrinth.com/mod/patchouli), the first time you enter a world you receive *Field Notes*. Craft it with a book and a stick. Without Patchouli the rest of the mod works as usual.
 
 ## Downloads
 
@@ -26,7 +25,6 @@ Download these files and put them in the `mods` folder:
 | --- | --- | --- |
 | `placedsticks-1.0.0.jar` | Yes | this mod |
 | `kotlinforforge-5.8.0-all.jar` | Yes | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) (LGPL-2.1) |
-| `Patchouli-1.21.1-93-NEOFORGE.jar` | No | [Patchouli](https://modrinth.com/mod/patchouli) (CC-BY-NC-SA-3.0), only if you want the guidebook |
 
 Do not install `*-sources.jar`.
 
@@ -38,14 +36,12 @@ Do not install `*-sources.jar`.
 | NeoForge | 21.1.209 (any 21.1.x should work) |
 | Kotlin for Forge | 5.8.0, **NeoForge** build |
 | Java | 21 |
-| Patchouli | any 1.21.1 build, only if you want the book |
 
 ## Installation
 
 1. Install NeoForge 1.21.1.
 2. Download the jars from [the latest Release](https://github.com/Nergan/placed-sticks-mod/releases/latest) or from [Modrinth](https://modrinth.com/project/placed-sticks).
 3. Put `placedsticks-1.0.0.jar` and `kotlinforforge-5.8.0-all.jar` in `mods`.
-4. Optionally add `Patchouli-1.21.1-93-NEOFORGE.jar` from the same GitHub release.
 
 The mod is required on both client and server.
 

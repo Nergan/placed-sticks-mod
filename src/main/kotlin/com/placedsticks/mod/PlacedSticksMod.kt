@@ -1,7 +1,6 @@
 package com.placedsticks.mod
 
 import com.placedsticks.mod.block.ModBlocks
-import com.placedsticks.mod.event.GuideHandler
 import com.placedsticks.mod.event.RodPlacement
 import net.neoforged.bus.api.IEventBus
 import net.neoforged.fml.ModContainer
@@ -26,6 +25,5 @@ class PlacedSticksMod(modEventBus: IEventBus, modContainer: ModContainer) {
         ModBlocks.register(modEventBus)
         modEventBus.addListener { _: FMLCommonSetupEvent -> ModBlocks.onCommonSetup() }
         NeoForge.EVENT_BUS.register(RodPlacement)
-        NeoForge.EVENT_BUS.register(GuideHandler)
     }
 }

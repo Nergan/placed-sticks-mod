@@ -1,13 +1,12 @@
 {
-  "credit": "Stalk cuboid adapted from the vanilla bamboo block, leaves removed so the stem can lie on any axis",
   "textures": {
     "bamboo": "minecraft:block/bamboo_stalk",
     "particle": "minecraft:block/bamboo_stalk"
   },
   "elements": [
     {
-      "from": [6.5, 0, 6.5],
-      "to": [9.5, 16, 9.5],
+      "from": [7.15, 0, 7.15],
+      "to": [8.85, 16, 8.85],
       "faces": {
         "north": { "uv": [13, 0, 16, 16], "texture": "#bamboo" },
         "east": { "uv": [13, 0, 16, 16], "texture": "#bamboo" },

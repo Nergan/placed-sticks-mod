@@ -42,10 +42,3 @@ type = "required"
 versionRange = "${kff_version_range}"
 ordering = "NONE"
 side = "BOTH"
-
-[[dependencies.${mod_id}]]
-modId = "patchouli"
-type = "optional"
-versionRange = "[0,)"
-ordering = "NONE"
-side = "BOTH"

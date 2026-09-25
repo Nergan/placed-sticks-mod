@@ -27,10 +27,8 @@ jobs:
           set -euo pipefail
           mod_version="$(grep -E '^mod_version=' gradle.properties | cut -d= -f2- | tr -d '\r')"
           kff_version="$(grep -E '^kff_version=' gradle.properties | cut -d= -f2- | tr -d '\r')"
-          patchouli_version="$(grep -E '^patchouli_version=' gradle.properties | cut -d= -f2- | tr -d '\r')"
           echo "mod_version=${mod_version}" >> "$GITHUB_OUTPUT"
           echo "kff_version=${kff_version}" >> "$GITHUB_OUTPUT"
-          echo "patchouli_version=${patchouli_version}" >> "$GITHUB_OUTPUT"
           echo "mod_version=${mod_version}" >> "$GITHUB_ENV"
 
       - name: Check tag matches mod_version
@@ -96,8 +94,7 @@ jobs:
           chmod +x .github/scripts/fetch-companion-jars.sh
           .github/scripts/fetch-companion-jars.sh \
             release-assets \
-            "${{ steps.versions.outputs.kff_version }}" \
-            "${{ steps.versions.outputs.patchouli_version }}"
+            "${{ steps.versions.outputs.kff_version }}"
           ls -lh release-assets
 
       - name: Delete release files that are no longer shipped
@@ -131,7 +128,6 @@ jobs:
           files: |
             release-assets/placedsticks-*.jar
             release-assets/kotlinforforge-*.jar
-            release-assets/Patchouli-*.jar
           body: |
             Minecraft **1.21.1** / NeoForge. Put the jars you need into the `mods` folder.
 
@@ -139,9 +135,8 @@ jobs:
             | --- | --- | --- |
             | `placedsticks-${{ steps.versions.outputs.mod_version }}.jar` | Yes | this mod, [MPL-2.0](https://github.com/Nergan/placed-sticks-mod/blob/main/LICENSE) |
             | `kotlinforforge-${{ steps.versions.outputs.kff_version }}-all.jar` | Yes | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) (LGPL-2.1) |
-            | `Patchouli-*-NEOFORGE.jar` | No, only for the guidebook | [Patchouli](https://modrinth.com/mod/patchouli) (CC-BY-NC-SA-3.0, VazkiiMods) |
 
-            Do not install `*-sources.jar`. Companion jars are official Modrinth builds, rehosted here for a one-page install. Patchouli is redistributed for non-commercial use with attribution to VazkiiMods. GitHub shows a SHA-256 digest next to each uploaded file.
+            Do not install `*-sources.jar`. The Kotlin for Forge jar is the official Modrinth build, rehosted here for a one-page install. GitHub shows a SHA-256 digest next to each uploaded file.
 
       - name: Publish Modrinth
         uses: Kir-Antipov/mc-publish@v3.3
@@ -163,4 +158,3 @@ jobs:
           files: release-assets/placedsticks-${{ steps.versions.outputs.mod_version }}.jar
           dependencies: |
             kotlin-for-forge(required){modrinth:ordsPcFz}
-            patchouli(optional){modrinth:nU0bVIaL}
