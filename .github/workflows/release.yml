@@ -169,20 +169,24 @@ jobs:
             Do not install `*-sources.jar`. Companion jars are official Modrinth builds. The line "requires fabric 0.100.3" means the Fabric API jar, not Fabric Loader.
 
       - name: Replace Modrinth versions
+        id: modrinth
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
         run: |
           set -euo pipefail
           if [[ -z "${MODRINTH_TOKEN}" ]]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "MODRINTH_TOKEN is empty. Modrinth publish will not replace an existing version."
             exit 0
           fi
+          echo "ready=true" >> "$GITHUB_OUTPUT"
           python3 .github/scripts/replace-modrinth-versions.py \
             placed-sticks \
-            "${mod_version}" \
-            "${mod_version}-fabric"
+            "${{ steps.versions.outputs.mod_version }}" \
+            "${{ steps.versions.outputs.mod_version }}-fabric"
 
       - name: Publish Modrinth
+        if: steps.modrinth.outputs.ready == 'true'
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: placed-sticks
@@ -204,6 +208,7 @@ jobs:
             kotlin-for-forge(required){modrinth:ordsPcFz}
 
       - name: Publish Modrinth Fabric
+        if: steps.modrinth.outputs.ready == 'true'
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: placed-sticks
@@ -224,6 +229,14 @@ jobs:
           dependencies: |
             fabric-api(required){modrinth:P7dR8mSH}
             fabric-language-kotlin(required){modrinth:Ha28R6CL}
+
+      - name: Delete replaced Modrinth versions
+        if: steps.modrinth.outputs.ready == 'true'
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: |
+          set -euo pipefail
+          python3 .github/scripts/replace-modrinth-versions.py --finish release-assets/modrinth-delete-after-publish.txt
 
       - name: Set up Node.js
         if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
