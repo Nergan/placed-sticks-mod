@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "placedsticks",
+  "version": "${version}",
+  "name": "Placed Sticks",
+  "description": "Place sticks and bamboo stalks as thin rods, up to three per block.",
+  "authors": ["Nergan"],
+  "contact": {
+    "homepage": "https://github.com/Nergan/placed-sticks-mod",
+    "issues": "https://github.com/Nergan/placed-sticks-mod/issues"
+  },
+  "license": "MPL-2.0",
+  "icon": "logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.placedsticks.mod.loader.fabric.PlacedSticksFabric"]
+  },
+  "mixins": ["placedsticks.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "1.21.1",
+    "java": ">=21",
+    "fabric-api": "*",
+    "fabric-language-kotlin": ">=1.13.2+kotlin.2.1.20"
+  }
+}

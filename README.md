@@ -4,7 +4,7 @@
 
 ![Placed Sticks](logo.png)
 
-A **Minecraft 1.21.1** NeoForge mod: place sticks and bamboo stalks as thin rods. Written in Kotlin with [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge).
+A **Minecraft 1.21.1** mod for NeoForge and Fabric: place sticks and bamboo stalks as thin rods. NeoForge uses [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge). Fabric uses [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin). Install one loader, not both.
 
 Block names are available in English and Russian.
 
@@ -19,12 +19,22 @@ Block names are available in English and Russian.
 
 Jars live on [GitHub Releases](https://github.com/Nergan/placed-sticks-mod/releases/latest) and on [Modrinth](https://modrinth.com/project/placed-sticks). A push to `main` updates the files on the current version’s release. Modrinth receives only this mod’s jar.
 
-Download these files and put them in the `mods` folder:
+Download one set and put those files in the `mods` folder.
+
+### NeoForge
 
 | File | Required | What it is |
 | --- | --- | --- |
-| `placedsticks-1.0.0.jar` | Yes | this mod |
+| `placedsticks-neoforge-1.21.1-1.0.0.jar` | Yes | this mod |
 | `kotlinforforge-5.8.0-all.jar` | Yes | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) (LGPL-2.1) |
+
+### Fabric
+
+| File | Required | What it is |
+| --- | --- | --- |
+| `placedsticks-fabric-1.21.1-1.0.0.jar` | Yes | this mod |
+| `fabric-api-0.116.17+1.21.1.jar` | Yes | [Fabric API](https://modrinth.com/mod/fabric-api). A message that says "fabric 0.100.3" means this jar, not Fabric Loader |
+| `fabric-language-kotlin-1.13.2+kotlin.2.1.20.jar` | Yes | [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) |
 
 Do not install `*-sources.jar`.
 
@@ -35,13 +45,16 @@ Do not install `*-sources.jar`.
 | Minecraft | 1.21.1 |
 | NeoForge | 21.1.209 (any 21.1.x should work) |
 | Kotlin for Forge | 5.8.0, **NeoForge** build |
+| Fabric Loader | 0.16.10 or newer |
+| Fabric API | 0.116.17+1.21.1 |
+| Fabric Language Kotlin | 1.13.2+kotlin.2.1.20 |
 | Java | 21 |
 
 ## Installation
 
-1. Install NeoForge 1.21.1.
-2. Download the jars from [the latest Release](https://github.com/Nergan/placed-sticks-mod/releases/latest) or from [Modrinth](https://modrinth.com/project/placed-sticks).
-3. Put `placedsticks-1.0.0.jar` and `kotlinforforge-5.8.0-all.jar` in `mods`.
+NeoForge: install NeoForge 1.21.1 and put `placedsticks-neoforge-1.21.1-1.0.0.jar` and `kotlinforforge-5.8.0-all.jar` in `mods`.
+
+Fabric: install Fabric Loader 0.16.10 or newer and put `placedsticks-fabric-1.21.1-1.0.0.jar`, `fabric-api-0.116.17+1.21.1.jar`, and `fabric-language-kotlin-1.13.2+kotlin.2.1.20.jar` in `mods`. Loader 0.19.x is fine.
 
 The mod is required on both client and server.
 

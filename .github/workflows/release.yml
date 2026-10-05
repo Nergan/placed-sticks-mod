@@ -27,8 +27,12 @@ jobs:
           set -euo pipefail
           mod_version="$(grep -E '^mod_version=' gradle.properties | cut -d= -f2- | tr -d '\r')"
           kff_version="$(grep -E '^kff_version=' gradle.properties | cut -d= -f2- | tr -d '\r')"
+          fabric_api_version="$(grep -E '^fabric_api_version=' gradle.properties | cut -d= -f2- | tr -d '\r')"
+          fabric_kotlin_version="$(grep -E '^fabric_kotlin_version=' gradle.properties | cut -d= -f2- | tr -d '\r')"
           echo "mod_version=${mod_version}" >> "$GITHUB_OUTPUT"
           echo "kff_version=${kff_version}" >> "$GITHUB_OUTPUT"
+          echo "fabric_api_version=${fabric_api_version}" >> "$GITHUB_OUTPUT"
+          echo "fabric_kotlin_version=${fabric_kotlin_version}" >> "$GITHUB_OUTPUT"
           echo "mod_version=${mod_version}" >> "$GITHUB_ENV"
 
       - name: Check tag matches mod_version
@@ -69,7 +73,7 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: "8.10"
+          gradle-version: "8.11"
 
       - name: Build and test
         run: gradle build --stacktrace
@@ -90,11 +94,25 @@ jobs:
               *) cp -v "${jar}" release-assets/ ;;
             esac
           done
-          test -f "release-assets/placedsticks-${{ steps.versions.outputs.mod_version }}.jar"
+          test -f "release-assets/placedsticks-neoforge-1.21.1-${{ steps.versions.outputs.mod_version }}.jar"
+          fabric_jars=(fabric/build/libs/placedsticks-fabric-*.jar)
+          if [[ ${#fabric_jars[@]} -eq 0 ]]; then
+            echo "No Fabric jar in fabric/build/libs"
+            exit 1
+          fi
+          for jar in "${fabric_jars[@]}"; do
+            case "${jar}" in
+              *-sources.jar|*-dev.jar) continue ;;
+              *) cp -v "${jar}" release-assets/ ;;
+            esac
+          done
+          test -f "release-assets/placedsticks-fabric-1.21.1-${{ steps.versions.outputs.mod_version }}.jar"
           chmod +x .github/scripts/fetch-companion-jars.sh
           .github/scripts/fetch-companion-jars.sh \
             release-assets \
-            "${{ steps.versions.outputs.kff_version }}"
+            "${{ steps.versions.outputs.kff_version }}" \
+            "${{ steps.versions.outputs.fabric_api_version }}" \
+            "${{ steps.versions.outputs.fabric_kotlin_version }}"
           ls -lh release-assets
 
       - name: Delete release files that are no longer shipped
@@ -128,15 +146,41 @@ jobs:
           files: |
             release-assets/placedsticks-*.jar
             release-assets/kotlinforforge-*.jar
+            release-assets/fabric-api-*.jar
+            release-assets/fabric-language-kotlin-*.jar
           body: |
-            Minecraft **1.21.1** / NeoForge. Put the jars you need into the `mods` folder.
+            Minecraft **1.21.1**. Install either the NeoForge set or the Fabric set, not both.
+
+            ### NeoForge
 
             | File | Required | Source |
             | --- | --- | --- |
-            | `placedsticks-${{ steps.versions.outputs.mod_version }}.jar` | Yes | this mod, [MPL-2.0](https://github.com/Nergan/placed-sticks-mod/blob/main/LICENSE) |
+            | `placedsticks-neoforge-1.21.1-${{ steps.versions.outputs.mod_version }}.jar` | Yes | this mod |
             | `kotlinforforge-${{ steps.versions.outputs.kff_version }}-all.jar` | Yes | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) (LGPL-2.1) |
 
-            Do not install `*-sources.jar`. The Kotlin for Forge jar is the official Modrinth build, rehosted here for a one-page install. GitHub shows a SHA-256 digest next to each uploaded file.
+            ### Fabric
+
+            | File | Required | Source |
+            | --- | --- | --- |
+            | `placedsticks-fabric-1.21.1-${{ steps.versions.outputs.mod_version }}.jar` | Yes | this mod |
+            | `fabric-api-*.jar` | Yes | [Fabric API](https://modrinth.com/mod/fabric-api) (Apache-2.0) |
+            | `fabric-language-kotlin-*.jar` | Yes | [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) (Apache-2.0) |
+
+            Do not install `*-sources.jar`. Companion jars are official Modrinth builds. The line "requires fabric 0.100.3" means the Fabric API jar, not Fabric Loader.
+
+      - name: Replace Modrinth versions
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${MODRINTH_TOKEN}" ]]; then
+            echo "MODRINTH_TOKEN is empty. Modrinth publish will not replace an existing version."
+            exit 0
+          fi
+          python3 .github/scripts/replace-modrinth-versions.py \
+            placed-sticks \
+            "${mod_version}" \
+            "${mod_version}-fabric"
 
       - name: Publish Modrinth
         uses: Kir-Antipov/mc-publish@v3.3
@@ -155,9 +199,31 @@ jobs:
             1.21.1
           java: |
             21
-          files: release-assets/placedsticks-${{ steps.versions.outputs.mod_version }}.jar
+          files: release-assets/placedsticks-neoforge-1.21.1-${{ steps.versions.outputs.mod_version }}.jar
           dependencies: |
             kotlin-for-forge(required){modrinth:ordsPcFz}
+
+      - name: Publish Modrinth Fabric
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: placed-sticks
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-featured: false
+          name: ${{ steps.versions.outputs.mod_version }} Fabric
+          version: ${{ steps.versions.outputs.mod_version }}-fabric
+          version-type: release
+          changelog: |
+            Minecraft 1.21.1 / Fabric. Placed Sticks ${{ steps.versions.outputs.mod_version }}.
+          loaders: |
+            fabric
+          game-versions: |
+            1.21.1
+          java: |
+            21
+          files: release-assets/placedsticks-fabric-1.21.1-${{ steps.versions.outputs.mod_version }}.jar
+          dependencies: |
+            fabric-api(required){modrinth:P7dR8mSH}
+            fabric-language-kotlin(required){modrinth:Ha28R6CL}
 
       - name: Set up Node.js
         if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
@@ -185,7 +251,7 @@ jobs:
             fi
             printf '%s\n' "${matches[0]}"
           }
-          mod_jar="$(one 'release-assets/placedsticks-*.jar')"
+          mod_jar="release-assets/placedsticks-neoforge-1.21.1-${{ steps.versions.outputs.mod_version }}.jar"
           kff_jar="$(one 'release-assets/kotlinforforge-*.jar')"
           node scripts/mcns-release.mjs placed-sticks-mod auto \
             "mod=${mod_jar}" \

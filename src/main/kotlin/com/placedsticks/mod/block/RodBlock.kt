@@ -4,7 +4,6 @@ import com.placedsticks.mod.util.RodAxes
 import com.placedsticks.mod.util.RodAxis
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
-import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.context.BlockPlaceContext
@@ -12,10 +11,12 @@ import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.material.MapColor
+import net.minecraft.world.level.material.PushReaction
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BooleanProperty
-import net.minecraft.world.phys.HitResult
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.Shapes
 import net.minecraft.world.phys.shapes.VoxelShape
@@ -54,13 +55,8 @@ class RodBlock(
         context: CollisionContext,
     ): VoxelShape = shapeFor(state)
 
-    override fun getCloneItemStack(
-        state: BlockState,
-        target: HitResult,
-        level: LevelReader,
-        pos: BlockPos,
-        player: Player,
-    ): ItemStack = ItemStack(if (dropBamboo) Items.BAMBOO else Items.STICK)
+    override fun getCloneItemStack(level: LevelReader, pos: BlockPos, state: BlockState): ItemStack =
+        ItemStack(if (dropBamboo) Items.BAMBOO else Items.STICK)
 
     override fun propagatesSkylightDown(state: BlockState, level: BlockGetter, pos: BlockPos): Boolean = true
 
@@ -105,5 +101,20 @@ class RodBlock(
 
         fun belowSupportsVanillaBamboo(state: BlockState): Boolean =
             state.`is`(BlockTags.BAMBOO_PLANTABLE_ON) || state.`is`(Blocks.BAMBOO)
+
+        fun createStick(): RodBlock = RodBlock(rodProps(MapColor.WOOD, SoundType.WOOD), dropBamboo = false, half = 1.0)
+
+        fun createBamboo(): RodBlock = RodBlock(rodProps(MapColor.PLANT, SoundType.BAMBOO), dropBamboo = true, half = 1.5)
+
+        private fun rodProps(color: MapColor, sound: SoundType): Properties =
+            Properties.of()
+                .mapColor(color)
+                .sound(sound)
+                .strength(0.4f)
+                .noOcclusion()
+                .pushReaction(PushReaction.DESTROY)
+                .isRedstoneConductor { _, _, _ -> false }
+                .isSuffocating { _, _, _ -> false }
+                .isViewBlocking { _, _, _ -> false }
     }
 }
