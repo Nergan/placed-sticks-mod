@@ -17,7 +17,7 @@
 
 ## Загрузки
 
-Jar лежат на [GitHub Releases](https://github.com/Nergan/placed-sticks-mod/releases/latest) и на [Modrinth](https://modrinth.com/project/placed-sticks). Пуш в `main` обновляет файлы релиза текущей версии. На Modrinth попадает только jar этого мода.
+Jar лежат на [GitHub Releases](https://github.com/Nergan/placed-sticks-mod/releases/latest) и на [Modrinth](https://modrinth.com/project/placed-sticks). Пуш в `main` обновляет страницу GitHub Release для каждой пары версии Minecraft и загрузчика. На странице есть `all-jars.zip`. На Modrinth попадает только jar этого мода.
 
 Скачайте один набор и положите эти файлы в папку `mods`.
 

@@ -17,7 +17,7 @@ Block names are available in English and Russian.
 
 ## Downloads
 
-Jars live on [GitHub Releases](https://github.com/Nergan/placed-sticks-mod/releases/latest) and on [Modrinth](https://modrinth.com/project/placed-sticks). A push to `main` updates the files on the current version’s release. Modrinth receives only this mod’s jar.
+Jars live on [GitHub Releases](https://github.com/Nergan/placed-sticks-mod/releases/latest) and on [Modrinth](https://modrinth.com/project/placed-sticks). A push to `main` updates one GitHub Release page per Minecraft version and loader. Each page includes `all-jars.zip`. Modrinth receives only this mod’s jar.
 
 Download one set and put those files in the `mods` folder.
 
