@@ -58,7 +58,8 @@ tasks.withType<KotlinCompile>().configureEach {
 sourceSets.named("main") {
     java.srcDir(rootProject.file("../../fabric/src/main/java"))
     resources.srcDir("src/main/resources")
-    resources.srcDir(rootProject.file("../src/main/resources"))
+    // fabric/ is a subproject of versions/26.3, so the 26.3 resources are rootProject/src.
+    resources.srcDir(rootProject.file("src/main/resources"))
     resources.srcDir(rootProject.file("../../src/main/resources"))
 }
 
