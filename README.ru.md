@@ -14,6 +14,7 @@
 - **Три в одном блоке.** Нажмите по пруту другой гранью, чтобы добавить второй или третий. В блоке по одному пруту на каждую ось. При сломе возвращаются все палки, которые внутри были.
 - **Бамбук.** Те же прутья, чуть толще, с ванильной текстурой стебля. Обычный клик по земле, где бамбук растёт, по-прежнему сажает ванильный бамбук. Присядьте, чтобы поставить декоративный стебель. Там, где бамбук не растёт, стебель ставится без приседания.
 - **Используемые блоки.** Сундуки, двери и другие блоки, с которыми можно взаимодействовать, по-прежнему открываются, если не приседать. Присядьте, чтобы поставить прут на них.
+- **Поводок.** Поводок крепится к поставленной палке и к поставленному бамбуку так же, как к забору.
 
 ## Загрузки
 
@@ -25,14 +26,14 @@ Jar лежат на [GitHub Releases](https://github.com/Nergan/placed-sticks-mo
 
 | Файл | Обязателен | Что это |
 | --- | --- | --- |
-| `placedsticks-neoforge-1.21.1-1.0.0.jar` | Да | этот мод |
+| `placedsticks-neoforge-1.21.1-1.0.1.jar` | Да | этот мод |
 | `kotlinforforge-5.8.0-all.jar` | Да | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) (LGPL-2.1) |
 
 ### Fabric
 
 | Файл | Обязателен | Что это |
 | --- | --- | --- |
-| `placedsticks-fabric-1.21.1-1.0.0.jar` | Да | этот мод |
+| `placedsticks-fabric-1.21.1-1.0.1.jar` | Да | этот мод |
 | `fabric-api-0.116.17+1.21.1.jar` | Да | [Fabric API](https://modrinth.com/mod/fabric-api). Строка «fabric 0.100.3» означает этот jar, а не Fabric Loader |
 | `fabric-language-kotlin-1.13.2+kotlin.2.1.20.jar` | Да | [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) |
 
@@ -52,9 +53,9 @@ Jar лежат на [GitHub Releases](https://github.com/Nergan/placed-sticks-mo
 
 ## Установка
 
-NeoForge: установите NeoForge 1.21.1 и положите в `mods` файлы `placedsticks-neoforge-1.21.1-1.0.0.jar` и `kotlinforforge-5.8.0-all.jar`.
+NeoForge: установите NeoForge 1.21.1 и положите в `mods` файлы `placedsticks-neoforge-1.21.1-1.0.1.jar` и `kotlinforforge-5.8.0-all.jar`.
 
-Fabric: установите Fabric Loader 0.16.10 или новее и положите в `mods` файлы `placedsticks-fabric-1.21.1-1.0.0.jar`, `fabric-api-0.116.17+1.21.1.jar` и `fabric-language-kotlin-1.13.2+kotlin.2.1.20.jar`. Loader 0.19.x подходит.
+Fabric: установите Fabric Loader 0.16.10 или новее и положите в `mods` файлы `placedsticks-fabric-1.21.1-1.0.1.jar`, `fabric-api-0.116.17+1.21.1.jar` и `fabric-language-kotlin-1.13.2+kotlin.2.1.20.jar`. Loader 0.19.x подходит.
 
 Мод нужен и на клиенте, и на сервере.
 

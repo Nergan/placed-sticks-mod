@@ -14,6 +14,7 @@ Block names are available in English and Russian.
 - **Three per block.** Click the rod on another face to add a second or third. One block holds one rod along each axis. Breaking it returns every stick that was inside.
 - **Bamboo.** The same rods, a little thicker, using the vanilla bamboo stalk. A normal click on ground where bamboo can grow still plants vanilla bamboo. Sneak to place a decorative stalk there. Anywhere bamboo cannot grow, the stalk is placed without sneaking.
 - **Used blocks.** Chests, doors, and other blocks you can use still open when you are not sneaking. Sneak to place a rod on them.
+- **Leash.** A lead ties to a placed stick or a placed bamboo stalk the same way it ties to a fence.
 
 ## Downloads
 
@@ -25,14 +26,14 @@ Download one set and put those files in the `mods` folder.
 
 | File | Required | What it is |
 | --- | --- | --- |
-| `placedsticks-neoforge-1.21.1-1.0.0.jar` | Yes | this mod |
+| `placedsticks-neoforge-1.21.1-1.0.1.jar` | Yes | this mod |
 | `kotlinforforge-5.8.0-all.jar` | Yes | [Kotlin for Forge](https://modrinth.com/mod/kotlin-for-forge) (LGPL-2.1) |
 
 ### Fabric
 
 | File | Required | What it is |
 | --- | --- | --- |
-| `placedsticks-fabric-1.21.1-1.0.0.jar` | Yes | this mod |
+| `placedsticks-fabric-1.21.1-1.0.1.jar` | Yes | this mod |
 | `fabric-api-0.116.17+1.21.1.jar` | Yes | [Fabric API](https://modrinth.com/mod/fabric-api). A message that says "fabric 0.100.3" means this jar, not Fabric Loader |
 | `fabric-language-kotlin-1.13.2+kotlin.2.1.20.jar` | Yes | [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) |
 
@@ -52,9 +53,9 @@ Do not install `*-sources.jar`.
 
 ## Installation
 
-NeoForge: install NeoForge 1.21.1 and put `placedsticks-neoforge-1.21.1-1.0.0.jar` and `kotlinforforge-5.8.0-all.jar` in `mods`.
+NeoForge: install NeoForge 1.21.1 and put `placedsticks-neoforge-1.21.1-1.0.1.jar` and `kotlinforforge-5.8.0-all.jar` in `mods`.
 
-Fabric: install Fabric Loader 0.16.10 or newer and put `placedsticks-fabric-1.21.1-1.0.0.jar`, `fabric-api-0.116.17+1.21.1.jar`, and `fabric-language-kotlin-1.13.2+kotlin.2.1.20.jar` in `mods`. Loader 0.19.x is fine.
+Fabric: install Fabric Loader 0.16.10 or newer and put `placedsticks-fabric-1.21.1-1.0.1.jar`, `fabric-api-0.116.17+1.21.1.jar`, and `fabric-language-kotlin-1.13.2+kotlin.2.1.20.jar` in `mods`. Loader 0.19.x is fine.
 
 The mod is required on both client and server.
 
