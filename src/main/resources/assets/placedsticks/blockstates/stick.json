@@ -6,11 +6,11 @@
     },
     {
       "when": { "axis_x": "true" },
-      "apply": { "model": "placedsticks:block/stick_axis", "x": 90, "y": 90 }
+      "apply": { "model": "placedsticks:block/stick_x", "x": 90, "y": 90 }
     },
     {
       "when": { "axis_z": "true" },
-      "apply": { "model": "placedsticks:block/stick_axis", "x": 90 }
+      "apply": { "model": "placedsticks:block/stick_z", "x": 90 }
     }
   ]
 }
