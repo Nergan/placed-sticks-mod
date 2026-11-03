@@ -13,7 +13,7 @@
 
 Перед правкой загрузчика прочитай подходящий скилл из https://github.com/SirEdvin/minecraft-modding-skills (`fabric-modding`, `neoforge-modding`, `neoforge-legacy-modding`, `minecraft-26-1-migration`, `modrinth-api`). Версии бери из `gradle.properties` этого репозитория: если скилл с ними разошёлся, верь файлу.
 
-Перед багфиксом открой https://github.com/DietrichGebert/ponytail/blob/main/skills/ponytail/SKILL.md. Раздел «Готово» этот скилл не отменяет.Для этого мода читай `neoforge-modding` и `fabric-modding`. Вторую сборку не добавляй и не снимай, пока задача этого не просит. Ставится один набор, не оба сразу. Версию 26.3 не трогай, пока задача её прямо не назовёт.
+Перед багфиксом открой https://github.com/DietrichGebert/ponytail/blob/main/skills/ponytail/SKILL.md. Раздел «Готово» этот скилл не отменяет.Для этого мода читай `neoforge-modding` и `fabric-modding`. Вторую сборку не добавляй и не снимай, пока задача этого не просит. Ставится один набор, не оба сразу. Игровая правка входит в уже выпускаемые сборки 1.21.1 и 26.3, Fabric и NeoForge. Новую версию или загрузчик не заводить. Выпущенный номер не перезаписывается: подними `mod_version` и запушь `main`, чтобы обновились все страницы релиза.
 
 Для правок `versions/26.3` дополнительно читай `minecraft-26-1-migration`.
 
